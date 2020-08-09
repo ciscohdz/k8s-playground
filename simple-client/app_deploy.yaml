@@ -1,0 +1,29 @@
+# name of the deployment is .metadata.name
+# 3 replicas given by .spec.repliaas
+# .spec.slector - how deployment finds the pods to manage. 
+# #.spec.matchLabels: {key,value} pairs. where each one is a matchExpressions whose key is the key, operator is "In", and the values array contains only "value".  All requirements for both matchLabels and matchExpressions must be satisified to match
+
+# template: for the pods - pods are labled test-requestor after .spec.selector.metadata.labels.app
+# .spec.template.selector.spec: run one container named test-requestor with contianer image ciscohdz/test-requestor
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: test-requestor-deployment
+    labels:
+        app: test-requestor
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            app: test-requestor
+    template:
+        metadata:
+            labels:
+                app: test-requestor
+        spec:
+            containers:
+            - name: test-requestor
+              image: ciscohdz/test-requestor
+              imagePullPolicy: IfNotPresent
+            restartPolicy: Always
+            

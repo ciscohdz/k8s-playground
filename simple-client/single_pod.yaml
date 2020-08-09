@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name:  test-requestor-pod
+spec:
+  containers:
+  - name: ciscohdz/test-requestor
+    image: ciscohdz/test-requestor
+  restartPolicy: Never
