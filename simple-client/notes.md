@@ -41,3 +41,24 @@ For fixed completion count.  Done when one successful pod for each value in 1 to
  - any job terminates succesffuly no new pods created
  - looks like if parallelism is not set then it will start a job until the number is met.
  - spec.completions make sure that 50 complete with success. So if one fails it will start up another one.  
+
+
+After the job is done.  The pods are not deleted in order to view the logs(can also use kubectl delete cli)
+
+```
+kubectl delete jobs/test-requestor-batch-job
+```
+
+## .spec.backOffLimit
+
+if a pod fails more than above the job is a failure and the running pods will be killed
+
+# .spec.activeDeadlineSeconds
+
+Once this limit hits all pods will be terminated if the job is not complete.  Both the job and hte pod have this.  For the job set at job leve.
+
+# TTL
+
+### .spec.ttlSecondsAfterFinished (currently in alpha stage)
+
+ - timeout to delete the job after it is complete.  In seconds.
