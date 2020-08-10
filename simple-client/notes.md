@@ -62,3 +62,7 @@ Once this limit hits all pods will be terminated if the job is not complete.  Bo
 ### .spec.ttlSecondsAfterFinished (currently in alpha stage)
 
  - timeout to delete the job after it is complete.  In seconds.
+
+----------
+Network Policy
+
